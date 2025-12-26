@@ -33,7 +33,7 @@ sendBtn.onclick = async () => {
           func: () => document.documentElement.outerHTML
         },
         async (res) => {
-          // 🔴 Permission / execution failure check
+          // Permission / execution failure check
           if (chrome.runtime.lastError) {
             console.error("Script execution failed:", chrome.runtime.lastError);
             status.innerText = "Permission denied or script failed";
@@ -48,12 +48,12 @@ sendBtn.onclick = async () => {
 
           const html = res[0].result;
 
-          // 4️⃣ Debug proof
+          // Debug proof
           console.log("Sending URL:", url);
           console.log("HTML length:", html.length);
           console.log("HTML preview:", html.substring(0, 300));
 
-          // 5️⃣ Send to backend
+          //  Send to backend
           const response = await fetch("http://localhost:3000/scrape-profile", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
